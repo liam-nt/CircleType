@@ -360,20 +360,33 @@ class CircleType {
       this.container.style.width = `${width / this._fontSize}em`;
     }
 
-
+    this._call('render');
 
     return this;
   }
 
-  on(ev, cb){
-    if(this.callbacks[ev]){
+  on(ev, cb) {
+    if (this.callbacks[ev]) {
       this.callbacks[ev].push(cb);
-    }else{
-      this.callbacks[ev] = [cb];
+    } else {
+      this.callbacks[ev] = [ cb ];
     }
-    console.log("Set callback")
-    console.log(this.callbacks)
+    return this;
   }
+
+
+    /**
+   * Fires all callbacks for specified event
+   * 
+   *
+   * @private
+   *
+   * @return {CircleType} This instance.
+   */
+     _call(ev) {
+      this.callbacks[ ev ] && this.callbacks[ ev ].forEach(( cb ) => cb());
+      return this;
+    }
 }
 
 export default CircleType;
