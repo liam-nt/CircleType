@@ -1,3 +1,5 @@
+> Forked to add callbacks, allow fade up after rendering curved text.
+
 # CircleType
 
 [![Build Status](https://travis-ci.org/peterhry/CircleType.svg?branch=master)](https://travis-ci.org/peterhry/CircleType)
