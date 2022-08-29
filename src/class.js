@@ -47,6 +47,8 @@ class CircleType {
     this.element.innerHTML = '';
     this.element.appendChild(container);
 
+    this.callbacks = {};
+
     const { fontSize, lineHeight } = window.getComputedStyle(this.element);
 
     this._fontSize = parseFloat(fontSize);
@@ -358,7 +360,19 @@ class CircleType {
       this.container.style.width = `${width / this._fontSize}em`;
     }
 
+
+
     return this;
+  }
+
+  on(ev, cb){
+    if(this.callbacks[ev]){
+      this.callbacks[ev].push(cb);
+    }else{
+      this.callbacks[ev] = [cb];
+    }
+    console.log("Set callback")
+    console.log(this.callbacks)
   }
 }
 
